@@ -60,13 +60,15 @@ if flag_advanced_tips:
   time.sleep(5)
   
   # click on attributes and displayed element, 
+  # error message whether element is interactable or clickable
   # avoid hidden elements
   elem_displayed = find_elements_by_class_name('blah-link')
   for each_elem in elem_displayed:
-    if each_elem.get_attribute('title')=='this is the winner' & each_elem.is_displayed():
-      each_elem.click()
-      time.sleep(5)
-      break
+    if each_elem.get_attribute('title')=='this is the winner':
+      if each_elem.is_displayed():
+        each_elem.click()
+        time.sleep(5)
+        break
       
   # select amongst multiple browser windows
   selenium_window_before = driver.window_handles[0]
